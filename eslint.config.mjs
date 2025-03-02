@@ -33,7 +33,7 @@ export default [
   ...tseslint.configs.recommended,
   eslint.configs.recommended,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {
       prettier: fixupPluginRules(prettier),
       'simple-import-sort': fixupPluginRules(simpleImportSort),

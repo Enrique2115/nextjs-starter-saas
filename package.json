@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "lint:strict": "next lint ./src --max-warnings=0 --quiet",
+    "lint:strict": "next lint --max-warnings=0 --quiet",
     "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md,mdx,yml,yaml}",
     "prepare": "node .husky/install.mjs"
   },
