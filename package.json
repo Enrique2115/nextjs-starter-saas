@@ -2,11 +2,16 @@
   "name": "nextjs-starter-saas",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:strict": "next lint ./src --max-warnings=0 --quiet",
+    "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md,mdx,yml,yaml}",
+    "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
     "@sentry/nextjs": "9.3.0",
@@ -15,14 +20,34 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
     "@tailwindcss/postcss": "^4.0.9",
     "@types/node": "^22.13.8",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.2.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "stylelint": "^16.15.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-tailwindcss": "^1.0.0",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5"
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.25.0"
   },
   "pnpm": {
     "overrides": {
