@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -31,13 +33,13 @@ export default function Contact() {
             </Button>
           </form>
         </div>
-        <img
-          src="/placeholder.svg"
+        <Image
+          src="/contact-us.webp"
           width="600"
           height="400"
           alt="Contact Us"
           className="mx-auto rounded-lg shadow-lg"
-          style={{ aspectRatio: '600/400', objectFit: 'cover' }}
+          style={{ aspectRatio: '500/400', objectFit: 'cover' }}
         />
       </div>
     </section>

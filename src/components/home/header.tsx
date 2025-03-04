@@ -43,7 +43,7 @@ export default function HeaderHome() {
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" name="Menu">
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </SheetTrigger>
