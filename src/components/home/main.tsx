@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { Button } from '../ui/button';
 
 export default function Main() {
@@ -15,8 +17,8 @@ export default function Main() {
           </p>
           <Button className="w-full sm:w-auto">Start Trial</Button>
         </div>
-        <img
-          src="/placeholder.svg"
+        <Image
+          src="/hero.webp"
           width="550"
           height="550"
           alt="Hero"
