@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
-/* @config '../../tailwind.config.ts'; */
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
 
 @utility text-balance {
   text-wrap: balance;
@@ -8,14 +10,14 @@
 
 @layer utilities {
   :root {
-    --background: #fff;
-    --foreground: #171717;
+    --background: oklch(98.4% 0 0deg);
+    --foreground: oklch(11% 0.03 266deg);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
+      --background: oklch(11% 0.03 266deg);
+      --foreground: oklch(98.4% 0 0deg);
     }
   }
 
@@ -23,5 +25,109 @@
     color: var(--foreground);
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+:root {
+  --background: oklch(98.4% 0 0deg);
+  --foreground: oklch(11% 0.03 266deg);
+  --card: oklch(100% 0 0deg);
+  --card-foreground: oklch(11% 0.03 266deg);
+  --popover: oklch(100% 0 0deg);
+  --popover-foreground: oklch(11% 0.03 266deg);
+  --primary: oklch(47% 0.25 300deg);
+  --primary-foreground: oklch(100% 0 0deg);
+  --secondary: oklch(100% 0 0deg);
+  --secondary-foreground: oklch(11% 0.03 266deg);
+  --muted: oklch(96% 0.01 260deg);
+  --muted-foreground: oklch(46% 0.05 260deg);
+  --accent: oklch(96% 0.01 260deg);
+  --accent-foreground: oklch(11% 0.03 266deg);
+  --destructive: oklch(65% 0.25 25deg);
+  --destructive-foreground: oklch(100% 0 0deg);
+  --border: oklch(90% 0.02 260deg);
+  --input: oklch(86% 0.02 260deg);
+  --ring: oklch(62% 0.25 170deg);
+  --chart-1: oklch(65% 0.22 261deg);
+  --chart-2: oklch(65% 0.25 340deg);
+  --chart-3: oklch(55% 0.2 220deg);
+  --chart-4: oklch(60% 0.18 184deg);
+  --chart-5: oklch(70% 0.2 40deg);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(11% 0.03 266deg);
+  --foreground: oklch(98% 0 0deg);
+  --card: oklch(16% 0.03 266deg);
+  --card-foreground: oklch(98% 0 0deg);
+  --popover: oklch(16% 0.03 266deg);
+  --popover-foreground: oklch(98% 0 0deg);
+  --primary: oklch(65% 0.22 261deg);
+  --primary-foreground: oklch(100% 0 0deg);
+  --secondary: oklch(11% 0.03 266deg);
+  --secondary-foreground: oklch(95% 0.05 263deg);
+  --accent: oklch(27% 0.05 260deg);
+  --accent-foreground: oklch(98% 0 0deg);
+  --muted: oklch(27% 0.05 260deg);
+  --muted-foreground: oklch(71% 0.05 260deg);
+  --destructive: oklch(55% 0.25 25deg);
+  --destructive-foreground: oklch(100% 0 0deg);
+  --border: oklch(27% 0.05 260deg);
+  --input: oklch(27% 0.05 260deg);
+  --ring: oklch(62% 0.25 170deg);
+  --chart-1: oklch(65% 0.22 261deg);
+  --chart-2: oklch(65% 0.25 340deg);
+  --chart-3: oklch(55% 0.2 220deg);
+  --chart-4: oklch(60% 0.18 184deg);
+  --chart-5: oklch(70% 0.2 40deg);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
