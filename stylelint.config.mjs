@@ -5,9 +5,17 @@ export default {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['utility', 'layer', 'apply'],
+        ignoreAtRules: [
+          'utility',
+          'layer',
+          'apply',
+          'plugin',
+          'custom-variant',
+          'theme',
+        ],
       },
     ],
     'no-descending-specificity': null,
+    'at-rule-no-deprecated': null,
   },
 };
