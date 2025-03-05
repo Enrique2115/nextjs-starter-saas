@@ -8,6 +8,8 @@ on:
 jobs:
   merge-master-into-develop:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,7 +24,7 @@ jobs:
           git pull origin develop
 
           git merge origin/master --no-edit || echo "merge-conflict=true" >> $GITHUB_OUTPUT
-          git push origin develop
+          git push origin HEAD:develop
         continue-on-error: true
 
       - name: Notify Conflict Slack
