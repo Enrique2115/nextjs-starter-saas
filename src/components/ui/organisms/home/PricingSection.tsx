@@ -1,6 +1,6 @@
-import { PriceCard } from '../shared/price-card';
-import { ResponsiveCarousel } from '../shared/responsive-carousel';
-import { SectionHeader } from '../shared/section-header';
+import { SectionHeader } from '@/components/ui/molecules/home/SectionHeader';
+import { PriceCard } from '@/components/ui/molecules/PriceCard';
+import { ResponsiveCarousel } from '@/components/ui/organisms/ResponsiveCarousel';
 
 export const pricingPlans = [
   {

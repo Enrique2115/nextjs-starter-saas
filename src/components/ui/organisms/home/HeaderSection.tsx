@@ -1,10 +1,9 @@
 import { MenuIcon, MountainIcon } from 'lucide-react';
 import Link from 'next/link';
 
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-
-import { ThemeToggle } from './toggle-theme';
+import { Button } from '@/components/ui/atoms/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/atoms/sheet';
+import { ThemeToggle } from '@/components/ui/atoms/toggle-theme';
 
 export default function HeaderHome() {
   return (
@@ -37,13 +36,15 @@ export default function HeaderHome() {
             Contact
           </Link>
           <ThemeToggle />
-          <Button>Start Trial</Button>
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/80">
+            Start Trial
+          </Button>
         </nav>
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" name="Menu">
+              <Button variant="outline" size="icon" aria-label="Menu">
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </SheetTrigger>
@@ -70,7 +71,9 @@ export default function HeaderHome() {
                 >
                   Contact
                 </Link>
-                <Button className="w-full">Start Trial</Button>
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/80 w-full">
+                  Start Trial
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
