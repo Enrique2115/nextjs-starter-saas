@@ -1,0 +1,36 @@
+name: '🔄 Sync Develop with Master'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  merge-master-into-develop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge master into develop
+        id: merge
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git checkout develop
+          git pull origin develop
+
+          git merge origin/master --no-edit || echo "merge-conflict=true" >> $GITHUB_OUTPUT
+          git push origin develop
+        continue-on-error: true
+
+      - name: Notify Conflict Slack
+        if: ${{ steps.merge.outputs.merge-conflict == 'true' }}
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "🚨 Conflicto al sincronizar `master` en `develop`. Resolver manualmente: ${{ github.server_url }}/${{ github.repository }}"
