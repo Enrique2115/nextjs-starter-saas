@@ -9,7 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
+} from '@/components/ui/atoms/carousel';
 import { ResponsiveCarouselProps } from '@/types/shared';
 
 export function ResponsiveCarousel(props: ResponsiveCarouselProps) {

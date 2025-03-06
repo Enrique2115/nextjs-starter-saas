@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/atoms/button';
 
 export default function Main() {
   return (
@@ -15,12 +15,15 @@ export default function Main() {
             business effortlessly. From invoicing to project management,
             we&apos;ve got you covered.
           </p>
-          <Button className="w-full sm:w-auto">Start Trial</Button>
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/80 w-full sm:w-auto">
+            Start Trial
+          </Button>
         </div>
         <Image
           src="/hero.webp"
           width="550"
           height="550"
+          loading="lazy"
           alt="Hero"
           className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
         />
