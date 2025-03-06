@@ -1,19 +1,16 @@
-import Contact from '@/components/home/contact';
-import Features from '@/components/home/features';
-import HeaderHome from '@/components/home/header';
-import Main from '@/components/home/main';
-import Pricing from '@/components/home/pricing';
+import ContactSection from '@/components/ui/organisms/home/ContactSection';
+import Features from '@/components/ui/organisms/home/FeatureSection';
+import HeroSection from '@/components/ui/organisms/home/HeroSection';
+import Pricing from '@/components/ui/organisms/home/PricingSection';
+import HomeTemplate from '@/components/ui/templates/HomePageTemplate';
 
 export default function Home() {
   return (
-    <div className="bg-background flex min-h-screen flex-col">
-      <HeaderHome />
-      <main className="flex-1">
-        <Main />
-        <Features />
-        <Pricing />
-        <Contact />
-      </main>
-    </div>
+    <HomeTemplate>
+      <HeroSection />
+      <Features />
+      <Pricing />
+      <ContactSection />
+    </HomeTemplate>
   );
 }

@@ -7,9 +7,9 @@ import {
   WarehouseIcon,
 } from 'lucide-react';
 
-import { FeatureCard } from '../shared/feature-card';
-import { ResponsiveCarousel } from '../shared/responsive-carousel';
-import { SectionHeader } from '../shared/section-header';
+import { FeatureCard } from '@/components/ui/molecules/FeatureCard';
+import { SectionHeader } from '@/components/ui/molecules/home/SectionHeader';
+import { ResponsiveCarousel } from '@/components/ui/organisms/ResponsiveCarousel';
 
 export const featuresData = [
   {
