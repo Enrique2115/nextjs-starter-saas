@@ -1,56 +1,67 @@
 'use client';
-
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/atoms/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/atoms/form';
 import { Input } from '@/components/ui/atoms/input';
-import { LoginDTO } from '@/modules/auth/types/auth.types';
-import { useAuthStore } from '@/stores/auth.store';
+import { useLogin } from '@/modules/auth/hooks/useAuth';
+import {
+  LoginFormValues,
+  loginSchema,
+} from '@/modules/auth/schema/auth.schema';
 
-import { Label } from '../../atoms/label';
+export function LoginForm() {
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: '', password: '' },
+  });
 
-export const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginDTO>();
-  const { login, loading, error } = useAuthStore();
-
-  const onSubmit: SubmitHandler<LoginDTO> = async (data) => {
-    await login(data);
-  };
+  const { mutate, isPending } = useLogin();
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-md space-y-4"
-    >
-      {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
-
-      <Label className="text-sm">Email</Label>
-      <Input
-        {...register('email', { required: 'Email is required' })}
-        type="email"
-      />
-
-      {errors.email?.message && (
-        <p className="text-red-500">{errors.email?.message}</p>
-      )}
-
-      <Label className="text-sm">Password</Label>
-      <Input
-        {...register('password', { required: 'Password is required' })}
-        type="password"
-      />
-
-      {errors.password?.message && (
-        <p className="text-red-500">{errors.password?.message}</p>
-      )}
-
-      <Button type="submit" variant="link" disabled={loading}>
-        {loading ? 'Signing in...' : 'Sign In'}
-      </Button>
-    </form>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit((values) => mutate(values))}
+        className="space-y-4"
+      >
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} placeholder="ejemplo@correo.com" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Contraseña</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" disabled={isPending} className="w-full">
+          {isPending ? 'Ingresando...' : 'Iniciar Sesión'}
+        </Button>
+      </form>
+    </Form>
   );
-};
+}

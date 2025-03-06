@@ -3,6 +3,7 @@ import tsParser from '@typescript-eslint/parser';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import path from 'node:path';
@@ -32,6 +33,7 @@ export default [
   ),
   ...tseslint.configs.recommended,
   eslint.configs.recommended,
+  ...pluginQuery.configs['flat/recommended'],
   {
     files: ['src/**/*.{js,jsx,ts,tsx}'],
     plugins: {
