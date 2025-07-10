@@ -29,7 +29,7 @@ jobs:
 
       - name: Notify Conflict Slack
         if: ${{ steps.merge.outputs.merge-conflict == 'true' }}
-        uses: slackapi/slack-github-action@v2.1.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           method: chat.postMessage
           token: ${{ secrets.SLACK_BOT_TOKEN }}
